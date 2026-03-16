@@ -10,7 +10,7 @@
     {
       "name": "crypto-analyzer",
       "source": "./crypto-analyzer",
-      "description": "Professional crypto market analysis: BTC deep scan, multi-timeframe trend analysis, liquidity needle-stick calculator",
+      "description": "Professional crypto market analysis: BTC deep scan, multi-timeframe trend, needle-stick calculator, day trading strategies with conservative risk management",
       "version": "1.0.0"
     }
   ]

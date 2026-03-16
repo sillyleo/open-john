@@ -1,10 +1,12 @@
 # Open John — Crypto Market Intelligence for AI Agents
 
-An AI agent skill/plugin that turns your AI into a conservative, data-driven crypto market analyst. Pure intelligence, no trading execution — all data from public APIs, no API keys required.
+An AI agent skill/plugin that turns your AI into a conservative, data-driven crypto market analyst with day trading strategy support. Pure intelligence, no trading execution — all data from public APIs, no API keys required.
 
 Works with **Claude Code**, **Claude Desktop**, and **OpenClaw**.
 
-## What You Get
+## Skills
+
+### Crypto Analyzer (market intelligence)
 
 | Tool | Description |
 |------|-------------|
@@ -14,15 +16,29 @@ Works with **Claude Code**, **Claude Desktop**, and **OpenClaw**.
 
 Supports BTC, ETH, SOL, SUI, and any coin listed on Binance.
 
+### Day Trading (short-term strategies)
+
+| Strategy | Description |
+|----------|-------------|
+| **Breakout** | Enter on confirmed breakouts of 4H swing highs/lows with volume confirmation |
+| **Retest** | Enter on pullback to broken support/resistance with FVG confluence |
+| **Needle Reversal** | Enter on rapid recovery from liquidation zones (50x/100x LP areas) |
+| **Trend Following** | Enter on EMA pullbacks in confirmed trends |
+
+Includes position sizing calculator, stop-loss rules, partial take-profit strategies, and a strategy selection decision tree.
+
 ## Personality
 
 The analyst is deliberately **conservative and risk-aware**:
 
 - Never gives buy/sell signals — provides intelligence for you to decide
+- **3-Minute Rational Review** — forces 4 questions before any trade decision
+- **Anti-chase protection** — warns against buying rebounds after crashes
 - Labels confidence levels (high/medium/low) on every judgment
 - Always includes risk warnings alongside bullish signals
 - Stays calm during extreme sentiment (FOMO / FUD)
 - Prioritizes macro signals over short-term technicals when they conflict
+- Built-in lessons from real trading mistakes
 
 ## Install
 
@@ -38,13 +54,12 @@ Requires [`uv`](https://docs.astral.sh/uv/) — dependencies are handled automat
 ### OpenClaw
 
 ```bash
-# Option 1: Copy skill to your workspace
 git clone https://github.com/sillyleo/open-john.git
-cp -r open-john/crypto-analyzer/skills/crypto-analyzer ~/.openclaw/skills/
 pip install ccxt pandas pandas-ta requests yfinance
 
-# Option 2: Add to workspace skills directory
-cp -r open-john/crypto-analyzer/skills/crypto-analyzer ./skills/
+# Copy both skills
+cp -r open-john/crypto-analyzer/skills/crypto-analyzer ~/.openclaw/skills/
+cp -r open-john/crypto-analyzer/skills/day-trading ~/.openclaw/skills/
 ```
 
 ### Claude Code Skill (direct)
@@ -87,22 +102,26 @@ After installing, just talk to your AI naturally:
 - "幫我看一下 ETH 多週期趨勢" → runs multi-timeframe analysis
 - "SOL 哪裡可能插針？" → runs needle-stick calculator
 - "給我完整的大餅分析" → runs all three tools
+- "BTC 這裡適合做多嗎？" → triggers day trading analysis with rational review
+- "大跌了要不要進場？" → triggers anti-chase protection
 
 ## Project Structure
 
 ```
 open-john/
 ├── .claude-plugin/
-│   └── marketplace.json          ← Claude Code marketplace catalog
-├── crypto-analyzer/              ← Plugin root
+│   └── marketplace.json              ← Claude Code marketplace catalog
+├── crypto-analyzer/                  ← Plugin root
 │   ├── .claude-plugin/
-│   │   └── plugin.json           ← Plugin metadata
-│   ├── .mcp.json                 ← Auto-start MCP server (Claude Code)
+│   │   └── plugin.json               ← Plugin metadata
+│   ├── .mcp.json                     ← Auto-start MCP server (Claude Code)
 │   ├── skills/
-│   │   └── crypto-analyzer/
-│   │       ├── SKILL.md          ← Skill definition (Claude Code + OpenClaw)
-│   │       └── scripts/          ← Python analysis scripts
-│   ├── mcp_server.py             ← MCP server (Claude Desktop)
+│   │   ├── crypto-analyzer/
+│   │   │   ├── SKILL.md              ← Market intelligence skill
+│   │   │   └── scripts/              ← Python analysis scripts
+│   │   └── day-trading/
+│   │       └── SKILL.md              ← Day trading strategy skill
+│   ├── mcp_server.py                 ← MCP server (Claude Desktop)
 │   └── requirements.txt
 └── README.md
 ```
