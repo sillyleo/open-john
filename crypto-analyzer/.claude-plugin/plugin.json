@@ -1,0 +1,11 @@
+{
+  "name": "crypto-analyzer",
+  "version": "1.0.0",
+  "description": "Professional crypto market intelligence: BTC market deep scan, multi-timeframe trend analysis (1H/4H/1D/3D), and liquidity needle-stick calculator with leverage liquidation prices.",
+  "author": {
+    "name": "Leo"
+  },
+  "repository": "https://github.com/sillyleo/open-john",
+  "license": "MIT",
+  "keywords": ["crypto", "bitcoin", "trading", "technical-analysis", "market-data"]
+}

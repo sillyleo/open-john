@@ -1,0 +1,17 @@
+{
+  "name": "open-john",
+  "owner": {
+    "name": "Leo"
+  },
+  "metadata": {
+    "description": "Crypto market intelligence tools for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "crypto-analyzer",
+      "source": "./crypto-analyzer",
+      "description": "Professional crypto market analysis: BTC deep scan, multi-timeframe trend analysis, liquidity needle-stick calculator",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "crypto-analyzer": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "ccxt>=4.0",
+        "--with", "pandas>=2.0",
+        "--with", "pandas-ta>=0.3.14b",
+        "--with", "requests>=2.28",
+        "--with", "yfinance>=0.2",
+        "--with", "mcp>=1.0",
+        "${CLAUDE_PLUGIN_ROOT}/mcp_server.py"
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# 核心分析依賴
+ccxt>=4.0
+pandas>=2.0
+pandas-ta>=0.3.14b
+requests>=2.28
+yfinance>=0.2
+
+# MCP Server (Claude Desktop 用)
+mcp>=1.0
