@@ -21,7 +21,7 @@ from pathlib import Path
 
 from mcp.server.fastmcp import FastMCP
 
-SCRIPTS_DIR = Path(__file__).parent / "scripts"
+SCRIPTS_DIR = Path(__file__).parent / "skills" / "crypto-analyzer" / "scripts"
 
 mcp = FastMCP("crypto-analyzer")
 

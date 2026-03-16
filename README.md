@@ -1,6 +1,8 @@
-# Open John — Crypto Market Intelligence for Claude
+# Open John — Crypto Market Intelligence for AI Agents
 
-A Claude Code plugin that turns Claude into a professional crypto market analyst. Pure intelligence, no trading execution — all data from public APIs, no API keys required.
+An AI agent skill/plugin that turns your AI into a conservative, data-driven crypto market analyst. Pure intelligence, no trading execution — all data from public APIs, no API keys required.
+
+Works with **Claude Code**, **Claude Desktop**, and **OpenClaw**.
 
 ## What You Get
 
@@ -12,6 +14,16 @@ A Claude Code plugin that turns Claude into a professional crypto market analyst
 
 Supports BTC, ETH, SOL, SUI, and any coin listed on Binance.
 
+## Personality
+
+The analyst is deliberately **conservative and risk-aware**:
+
+- Never gives buy/sell signals — provides intelligence for you to decide
+- Labels confidence levels (high/medium/low) on every judgment
+- Always includes risk warnings alongside bullish signals
+- Stays calm during extreme sentiment (FOMO / FUD)
+- Prioritizes macro signals over short-term technicals when they conflict
+
 ## Install
 
 ### Claude Code Plugin (recommended)
@@ -22,6 +34,18 @@ Supports BTC, ETH, SOL, SUI, and any coin listed on Binance.
 ```
 
 Requires [`uv`](https://docs.astral.sh/uv/) — dependencies are handled automatically.
+
+### OpenClaw
+
+```bash
+# Option 1: Copy skill to your workspace
+git clone https://github.com/sillyleo/open-john.git
+cp -r open-john/crypto-analyzer/skills/crypto-analyzer ~/.openclaw/skills/
+pip install ccxt pandas pandas-ta requests yfinance
+
+# Option 2: Add to workspace skills directory
+cp -r open-john/crypto-analyzer/skills/crypto-analyzer ./skills/
+```
 
 ### Claude Code Skill (direct)
 
@@ -57,12 +81,31 @@ Restart Claude Desktop.
 
 ## Usage Examples
 
-After installing, just talk to Claude naturally:
+After installing, just talk to your AI naturally:
 
 - "現在 BTC 盤面怎樣？" → runs BTC market deep scan
 - "幫我看一下 ETH 多週期趨勢" → runs multi-timeframe analysis
 - "SOL 哪裡可能插針？" → runs needle-stick calculator
 - "給我完整的大餅分析" → runs all three tools
+
+## Project Structure
+
+```
+open-john/
+├── .claude-plugin/
+│   └── marketplace.json          ← Claude Code marketplace catalog
+├── crypto-analyzer/              ← Plugin root
+│   ├── .claude-plugin/
+│   │   └── plugin.json           ← Plugin metadata
+│   ├── .mcp.json                 ← Auto-start MCP server (Claude Code)
+│   ├── skills/
+│   │   └── crypto-analyzer/
+│   │       ├── SKILL.md          ← Skill definition (Claude Code + OpenClaw)
+│   │       └── scripts/          ← Python analysis scripts
+│   ├── mcp_server.py             ← MCP server (Claude Desktop)
+│   └── requirements.txt
+└── README.md
+```
 
 ## Data Sources
 
