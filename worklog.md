@@ -4,3 +4,4 @@
 |------|-------|-----|----------|--------|
 | 2026-03-16 | 14:13 | 14:28 | 15m | Initial release: Crypto Analyzer plugin for Claude Code |
 | 2026-03-16 | 14:28 | 14:33 | 5m | Add OpenClaw support, conservative analyst personality, restructure for self-contained skill |
+| 2026-03-16 | 14:33 | 14:59 | 25m | Add day-trading skill and conservative risk mechanisms |
